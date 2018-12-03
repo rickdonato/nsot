@@ -1,0 +1,18 @@
+[all:vars]
+ansible_connection = local
+user = cisco
+pw = cisco
+
+[spine]
+spine-nxos-1 ansible_host=172.29.132.201 lo0_ipaddr=192.168.1.1 eth_range_end=8
+spine-nxos-2 ansible_host=172.29.132.202 lo0_ipaddr=192.168.1.2 eth_range_end=8
+
+[leaf]
+leaf-nxos-3 ansible_host=172.29.132.203 lo0_ipaddr=192.168.1.3 eth_range_end=2
+leaf-nxos-4 ansible_host=172.29.132.204 lo0_ipaddr=192.168.1.4 eth_range_end=2
+leaf-nxos-5 ansible_host=172.29.132.205 lo0_ipaddr=192.168.1.5 eth_range_end=2
+leaf-nxos-6 ansible_host=172.29.132.206 lo0_ipaddr=192.168.1.6 eth_range_end=2
+leaf-nxos-7 ansible_host=172.29.132.207 lo0_ipaddr=192.168.1.7 eth_range_end=2
+leaf-nxos-8 ansible_host=172.29.132.208 lo0_ipaddr=192.168.1.8 eth_range_end=2
+leaf-nxos-9 ansible_host=172.29.132.209 lo0_ipaddr=192.168.1.9 eth_range_end=2
+leaf-nxos-10 ansible_host=172.29.132.210 lo0_ipaddr=192.168.1.10 eth_range_end=2
