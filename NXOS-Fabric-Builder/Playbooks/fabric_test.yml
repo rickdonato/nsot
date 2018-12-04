@@ -1,5 +1,5 @@
 - name: FABRIC TEST
-  hosts: spine
+  hosts: all
   gather_facts: no
 
   vars:
@@ -16,9 +16,12 @@
         source: "{{ hostvars[inventory_hostname]['lo0_ipaddr'] }}"
         vrf: default
         dest: "192.168.1.{{item}}"
-      with_sequence: start=1 end=5
+      with_sequence: start=1 end=10
       register: out
 
     - debug:
         msg:
-         - "command: {{ out['results'][0]['commands'][0] }}"
+          - "command: {{ out.results[item|int].commands[0]}}"
+          - "rtt: {{ out.results[item|int].rtt}}"
+          - "pktloss: {{ out.results[item|int].packet_loss}}"
+      with_sequence: start=0 end=9
