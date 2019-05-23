@@ -1,0 +1,69 @@
+---
+- name: Configure Access Layer
+  hosts: access
+  gather_facts: false
+  connection: network_cli
+  tasks:
+  
+    - name: Create VLAN
+      ios_vlan:
+         vlan_id: "{{ item.id }}"
+         name: "{{ item.name }}"
+         state: present
+      with_items: "{{ vlans }}"
+
+    - name: Configure L2 Interface - Trunk
+      ios_l2_interface:
+         name: "{{ item.name }}"
+         mode: "{{ item.mode }}"
+         trunk_allowed_vlans: "{{ item.trunk_allowed_vlans }}"
+         state: "{{ item.state }}"
+      with_items: "{{ interfaces_l2 }}"
+      when: item.mode == "trunk"
+
+    - name: Configure L2 Interface - Access
+      ios_l2_interface:
+         name: "{{ item.name }}"
+         mode: "{{ item.mode }}"
+         access_vlan: "{{ item.access_vlan }}"
+         state: "{{ item.state }}"
+      with_items: "{{ interfaces_l2 }}"
+      when: item.mode == "access"
+
+           
+- name: Configure Aggregation Layer
+  hosts: aggregation
+  gather_facts: false
+  connection: network_cli
+  tasks:
+
+    - name: Create VLAN
+      nxos_vlan:
+         vlan_id: "{{ item.id }}"
+         name: "{{ item.name }}"
+         state: present
+      with_items: "{{ vlans }}"
+
+    - name: Configure L2 Interface - Trunk
+      nxos_l2_interface:
+         name: "{{ item.name }}"
+         mode: "{{ item.mode }}"
+         trunk_allowed_vlans: "{{ item.trunk_allowed_vlans }}"
+         state: "{{ item.state }}"
+      with_items: "{{ interfaces_l2 }}"
+      when: item.mode == "trunk"
+
+    - name: Enable Features
+      nxos_feature:
+         feature: interface-vlan
+         state: enabled
+
+    - name: Configure L3 Interface
+      nxos_config:
+         lines:
+           - interface "{{ item.name }}"
+           -   ip address "{{ item.ipv4 }}"
+           -   no shut
+      with_items: "{{ interfaces_l3 }}"
+
+
