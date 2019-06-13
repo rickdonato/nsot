@@ -1,0 +1,8 @@
+# draft questions for spine_leaf network
+
+# check mtu
+interface_properties = bfq.interfaceProperties().answer().frame()
+Interface_properties.columns
+
+node_props = bfq.interfaceProperties(nodes="/leaf|spine/",properties="MTU").answer().frame()
+ns_violators = node_props[node_props["MTU"].apply(lambda x: x <= 1500)]
