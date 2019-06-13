@@ -4,5 +4,6 @@
 interface_properties = bfq.interfaceProperties().answer().frame()
 Interface_properties.columns
 
-node_props = bfq.interfaceProperties(nodes="/leaf|spine/",properties="MTU").answer().frame()
+mtu = bfq.interfaceProperties(nodes="/leaf|spine/",properties="MTU").answer().frame()
+node_props = mtu[~mtu['Description'].str.contains('to server|Loopback|OOB')]
 ns_violators = node_props[node_props["MTU"].apply(lambda x: x <= 1500)]
