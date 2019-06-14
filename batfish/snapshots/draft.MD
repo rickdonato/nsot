@@ -21,6 +21,13 @@ from pybatfish.question import bfq
 bf_session.host = "172.29.236.139"
 load_questions()
 ```
+
+## Reduce Logging
+```
+import logging
+logging.getLogger('pybatfish').setLevel(logging.WARN)
+```
+
 ## Initialize Network/Snapshot
 ```
 cd /opt
@@ -46,7 +53,7 @@ bfq.parseWarning().answer().frame()
 * BGP multipath
 * Leafs only peered with Spines
 * Spines only peered with Leafs
-* ~~BGP Adjancies formed.~~
+* ~~BGP Adjancies formed?~~
 * ~~Jumbo Frames~~
 
 ### Check Avail Options
