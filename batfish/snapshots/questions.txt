@@ -1,6 +1,15 @@
 # draft questions for spine_leaf network
+# 
 
-# check mtu
+OSPF not on edge ports
+BGP multipath
+
+Leafs only peered with Spines
+Spines only peered with Leafs
+BGP Adjancies formed.
+
+
+# Check MTU on non-edge ports
 interface_properties = bfq.interfaceProperties().answer().frame()
 Interface_properties.columns
 
