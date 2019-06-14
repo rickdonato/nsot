@@ -71,12 +71,13 @@ def is_bgp_adj(leafs, spines):
         for l in leafs:
             node_prop = bfq.bgpEdges(nodes=s, remoteNodes=l).answer().frame()
             if node_prop.empty:
-                print(node_prop)
+                print("No BGP Adj: {}-{}".format(s,l))
+                
     print("== CHECKING LEAF TO SPINE BGP ADJ ==")
     for l in leafs:
         for s in spines:
            node_prop = bfq.bgpEdges(nodes=l, remoteNodes=s).answer().frame()
            if node_prop.empty:
-               print(node_prop)
+               print("No BGP Adj: {}-{}".format(l,s))
 ```
     
