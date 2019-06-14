@@ -4,6 +4,7 @@
 docker pull ....
 docker run --name batfish -d -v batfish-data:/data -p 8888:8888 -p 9997:9997 -p 9996:9996 batfish/allinone
 Get token and add to screen. via docker logs
+
 # client
 apt install python3-pip
 python3 -m pip install --upgrade git+https://github.com/batfish/pybatfish.git
@@ -24,7 +25,7 @@ bf_session.host = "172.29.236.139"
 cd /opt
 git clone https://github.com/packetpimp1/network-automation.git
 ```
-## import
+## Import
 ```
 NETWORK_NAME = "network-spine_leaf"
 SNAPSHOT_NAME = "snapshot-spine_leaf"
