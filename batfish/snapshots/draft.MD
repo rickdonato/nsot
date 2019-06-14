@@ -43,11 +43,11 @@ bfq.parseWarning().answer().frame()
 ## Questions
 
 * OSPF not on edge ports
-* OSPF on edge ports
 * BGP multipath
 * Leafs only peered with Spines
 * Spines only peered with Leafs
-* BGP Adjancies formed.
+* ~~BGP Adjancies formed.~~
+* ~~Jumbo Frames~~
 
 ### Check Avail Options
 ```
