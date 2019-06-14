@@ -19,6 +19,7 @@ from pybatfish.datamodel.flow import (HeaderConstraints,
 from pybatfish.question import bfq
 
 bf_session.host = "172.29.236.139"
+load_questions()
 ```
 ## Initialize Network/Snapshot
 ```
@@ -48,12 +49,12 @@ bfq.parseWarning().answer().frame()
 * Spines only peered with Leafs
 * BGP Adjancies formed.
 
-## Check Avail Options
+### Check Avail Options
 ```
 interface_properties = bfq.interfaceProperties().answer().frame()
 Interface_properties.columns
 ```
-## Check Jumbo MTU Enabled on Non-Edge ports
+### Check Jumbo MTU Enabled on Non-Edge ports
 ```
 node_props = bfq.interfaceProperties(nodes="/leaf|spine/", properties="Description|MTU").answer().frame()
 node_props = node_props[~node_props['Description'].str.contains('to server|Loopback|OOB')]
