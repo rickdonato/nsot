@@ -2,17 +2,19 @@
 # 
 
 OSPF not on edge ports
+OSPF on edge ports
 BGP multipath
 
 Leafs only peered with Spines
 Spines only peered with Leafs
 BGP Adjancies formed.
 
-
-# Check MTU on non-edge ports
+# Check Avail Options
 interface_properties = bfq.interfaceProperties().answer().frame()
 Interface_properties.columns
 
+# Check Jumbo MTU Enabled on Non-Edge ports
 node_props = bfq.interfaceProperties(nodes="/leaf|spine/", properties="Description|MTU").answer().frame()
 node_props = node_props[~node_props['Description'].str.contains('to server|Loopback|OOB')]
-ns_violators = node_props[node_props["MTU"].apply(lambda x: x <= 1500)]
+violators = list(node_props[node_props["MTU"].apply(lambda x: x <= 1500)]['Interface'])
+
