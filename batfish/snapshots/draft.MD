@@ -50,7 +50,7 @@ bfq.parseWarning().answer().frame()
 ## Questions
 
 * OSPF not on edge ports
-* BGP multipath
+~~* BGP multipath~~
 * Leafs only peered with Spines
 * Spines only peered with Leafs
 * ~~BGP Adjancies formed?~~
@@ -89,6 +89,15 @@ def is_bgp_adj(leafs, spines):
 ```
 ### Check BGP Adj 2
 ```
+# configuration check
+node_props = bfq.bgpSessionCompatibility().answer().frame()
+
+# session check
 node_props = bfq.bgpSessionStatus().answer().frame()
 node_props[~node_props['Established_Status'].str.contains('ESTABLISHED')]
+```
+
+## Check Multipath
+```
+bfq.bgpProcessConfiguration(properties="Multipath_EBGP").answer()
 ```
