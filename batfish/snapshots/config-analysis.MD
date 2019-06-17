@@ -1,3 +1,13 @@
+## Import
+```
+NETWORK_NAME = "network-spine_leaf"
+SNAPSHOT_NAME = "snapshot-spine_leaf"
+SNAPSHOT_PATH = "/opt/network-automation/batfish/snapshots/spine-leaf"
+
+bf_set_network(NETWORK_NAME)
+bf_init_snapshot(SNAPSHOT_PATH, name=SNAPSHOT_NAME, overwrite=True)
+```
+
 ## Questions
 
 * OSPF not on edge ports
