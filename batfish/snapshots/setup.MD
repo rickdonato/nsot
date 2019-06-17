@@ -33,15 +33,7 @@ logging.getLogger('pybatfish').setLevel(logging.WARN)
 cd /opt
 git clone https://github.com/packetpimp1/network-automation.git
 ```
-## Import
-```
-NETWORK_NAME = "network-spine_leaf"
-SNAPSHOT_NAME = "snapshot-spine_leaf"
-SNAPSHOT_PATH = "/opt/network-automation/batfish/snapshots/spine-leaf"
 
-bf_set_network(NETWORK_NAME)
-bf_init_snapshot(SNAPSHOT_PATH, name=SNAPSHOT_NAME, overwrite=True)
-```
 ## Parsing Status
 ```
 bfq.fileParseStatus().answer().frame()
