@@ -14,7 +14,3 @@ tr_answer = bfq.traceroute(startLocation="leaf1",headers=HeaderConstraints(dstIp
 tr_answer
 ```
 
-|   | Well Known      | 
-|---|------|---|---|
-| Mandatory   | dd  | dd  | 
-| Discretionary  |  dd | dd  |   
