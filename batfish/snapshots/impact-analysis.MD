@@ -13,3 +13,8 @@ bf_fork_snapshot(BASE_SNAPSHOT_NAME, FAIL_SPINE1_SNAPSHOT_NAME, deactivate_nodes
 tr_answer = bfq.traceroute(startLocation="leaf1",headers=HeaderConstraints(dstIps='server-2')).answer(FAIL_SPINE1_SNAPSHOT_NAME).frame()
 tr_answer
 ```
+
+|   | Well Known      | 
+|---|------|---|---|
+| Mandatory   | dd  | dd  | 
+| Discretionary  |  dd | dd  |   
