@@ -20,9 +20,13 @@ bf_set_network(NETWORK_NAME)
 bf_init_snapshot(SNAPSHOT_PATH, name=BASE_SNAPSHOT_NAME, overwrite=True)
 
 
-FAIL_SPINE1_SNAPSHOT_NAME = "fail_spine1"
-bf_fork_snapshot(BASE_SNAPSHOT_NAME, FAIL_SPINE1_SNAPSHOT_NAME, deactivate_nodes=["spine1"], deactivate_interfaces=[Interface('spine2', 'GigabitEthernet0/1')], overwrite=True)
+#FAIL_SPINE1_SNAPSHOT_NAME = "fail_spine1"
+bf_fork_snapshot(BASE_SNAPSHOT_NAME, 'leaf1-gi0_1-fail', deactivate_interfaces=[Interface('leaf1', 'GigabitEthernet0/1')], overwrite=True)
+bf_fork_snapshot(BASE_SNAPSHOT_NAME, 'leaf1-gi0_2-fail', deactivate_interfaces=[Interface('leaf1', 'GigabitEthernet0/2')], overwrite=True)
 
-tr_answer = bfq.traceroute(startLocation="leaf1",headers=HeaderConstraints(dstIps='server-2')).answer(FAIL_SPINE1_SNAPSHOT_NAME).frame()
-enum_tr_flows(tr_answer)
+tr_answer = bfq.traceroute(startLocation="server-1",headers=HeaderConstraints(dstIps='server-2')).answer("leaf1-gi0_1-fail").frame()
+pprint_tr_flows(tr_answer)
+
+tr_answer = bfq.traceroute(startLocation="server-1",headers=HeaderConstraints(dstIps='server-2')).answer("leaf1-gi0_2-fail").frame()
+pprint_tr_flows(tr_answer)
 ```
