@@ -1,4 +1,12 @@
 ```
+from pybatfish.client.commands import *
+from pybatfish.question.question import load_questions
+from pybatfish.datamodel.flow import (HeaderConstraints,
+                                         PathConstraints)
+from pybatfish.question import bfq
+
+bf_session.host = "172.29.236.139"
+load_questions()
 ```
 
 ```
