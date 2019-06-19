@@ -30,7 +30,7 @@ pprint_tr_flows(tr_answer)
 tr_answer = bfq.traceroute(startLocation="server-1",headers=HeaderConstraints(dstIps='server-2')).answer("leaf1-gi0_2-fail").frame()
 pprint_tr_flows(tr_answer)
 
-# check 
+# Returns flows that are successful in one snapshot but not in another.
 bf_fork_snapshot(BASE_SNAPSHOT_NAME, 'leaf1-gi0_1-fail', deactivate_interfaces=[Interface('leaf2', 'GigabitEthernet0/3')], overwrite=True)
 answer = bfq.differentialReachability(headers=HeaderConstraints(dstIps="server-2")).answer(snapshot="leaf1-gi0_1-fail",reference_snapshot=BASE_SNAPSHOT_NAME)
 print(answer.frame().to_string())
