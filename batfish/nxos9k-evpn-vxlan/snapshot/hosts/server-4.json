@@ -1,15 +1,15 @@
 {
-	"hostname": "server-2",
-	"iptablesFile": "iptables/server-2.iptables",
+	"hostname": "server-4",
+	"iptablesFile": "iptables/server-4.iptables",
 	"hostInterfaces": {
 		"eth1": {
 			"name": "eth1",
-			"prefix": "10.20.1.1/24",
+			"prefix": "10.20.1.2/24",
 			"gateway": "10.20.1.254"
 		}
                 "eth2": {
                         "name": "eth2",
-                        "prefix": "10.20.1.1/24",
+                        "prefix": "10.20.1.2/24",
                         "gateway": "10.20.1.254"
                 }
 	}
