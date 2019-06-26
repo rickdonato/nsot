@@ -1,0 +1,49 @@
+#install service
+docker pull batfish/allinone
+docker run --name batfish -d -v batfish-data:/data -p 8888:8888 -p 9997:9997 -p 9996:9996 batfish/allinone
+
+# install client
+apt install python3-pip
+python3 -m pip install --upgrade git+https://github.com/batfish/pybatfish.git
+
+# imports 
+from pybatfish.client.commands import *
+from pybatfish.question.question import load_questions
+from pybatfish.datamodel.flow import (HeaderConstraints,
+                                         PathConstraints)
+from pybatfish.question import bfq
+
+bf_session.host = "172.29.236.139"
+load_questions()
+
+# init snapshot
+NETWORK_NAME = "ebgp-spine-leaf-network"
+SNAPSHOT_NAME = "ebgp-spine-leaf-snapshot"
+SNAPSHOT_PATH = "/opy/network-automation/batfish/nxos9k-ebgp-spine-leaf/snapshot"
+
+bf_set_network(NETWORK_NAME)
+bf_init_snapshot(SNAPSHOT_PATH, name=SNAPSHOT_NAME, overwrite=True)
+
+# validate parsing
+bfq.fileParseStatus().answer().frame()
+bfq.parseWarning().answer().frame()
+
+# check 1 - jumbo frames
+node_props = bfq.interfaceProperties(nodes="/leaf|spine/", properties="Description|MTU").answer().frame().dropna()
+node_props = node_props[~node_props['Description'].str.contains('to server|Loopback|OOB')]
+node_props[node_props["MTU"].apply(lambda x: x < 9216)]
+
+# check 2 - Loopback Advertisement via OSPF
+routes = bfq.routes(nodes="/spine|leaf/",protocols="ospf").answer().frame()
+routes[routes['Network'].str.contains('/32')]
+
+# check 3 - BGP Multipath
+bfq.bgpProcessConfiguration(properties="Multipath_EBGP|Neighbors").answer().frame()
+
+# check 4 - BGP Peer Configuration
+bfq.bgpPeerConfiguration(nodes="/leaf/", properties="Remote_IP").answer().frame()
+bfq.bgpPeerConfiguration(nodes="/spine/", properties="Remote_IP").answer().frame()
+
+# check 5 - BGP Session Establishment
+bfq.bgpSessionStatus(nodes="/spine|leaf/").answer().frame()
+bfq.bgpSessionCompatibility(nodes="/spine|leaf/").answer().frame()
