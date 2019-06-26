@@ -1,0 +1,4 @@
+# reduce logging
+import logging
+logging.getLogger('pybatfish').setLevel(logging.WARN)
+
