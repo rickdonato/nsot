@@ -1,3 +1,4 @@
+# pretty prints the answer from bfq.traceroute()
 def pprint_traceroute(tr_answer):
     for flow_n, flow in enumerate(tr_answer['Flow']):
         print("# FLOW = {}\n".format(flow))
