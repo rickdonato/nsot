@@ -39,7 +39,8 @@ routes[routes['Network'].str.contains('/32')]
 
 # check 3 - BGP Multipath
 bfq.bgpProcessConfiguration(properties="Multipath_EBGP|Neighbors").answer().frame()
-
+- additional command
+len(bfq.traceroute(startLocation="server1",headers=HeaderConstraints(dstIps='server2')).answer().frame()['Traces'][0])
 # check 4 - BGP Peer Configuration
 bfq.bgpPeerConfiguration(nodes="/leaf/", properties="Remote_IP").answer().frame()
 bfq.bgpPeerConfiguration(nodes="/spine/", properties="Remote_IP").answer().frame()
