@@ -61,7 +61,7 @@ for i in range(MAX_CHAOS):
     ).frame()
 
     if len(answer) > 0:
-        print("[FAIL] difference found between BASE_SNAPSHOT and FAIL_SNAPSHOT")
+        print("[FAIL] No reachability discovered for the following flow(s)...")
         print_diff_reachability(answer)
         sys.exit(1)
 
