@@ -25,6 +25,7 @@ NETWORK_NAME = "ebgp-spine-leaf-network1"
 BASE_SNAPSHOT_NAME = "ebgp-spine-leaf-snapshot1"
 SNAPSHOT_PATH = sys.argv[1]
 BATFISH_SERVICE_IP = "172.29.236.139"
+MAX_CHAOS = 15
 
 bf_session.host = BATFISH_SERVICE_IP
 load_questions()
@@ -37,7 +38,7 @@ print("[*] Collecting link data")
 links = bfq.edges(nodes="/spine|leaf/",remoteNodes="/spine|leaf/").answer(BASE_SNAPSHOT_NAME).frame()
 
 print("[*] Releasing the Chaos Monkey")
-for i in range(20):
+for i in range(MAX_CHAOS):
     failed_link1_index = random.randint(0, len(links) - 1)
     failed_link2_index = random.randint(0, len(links) - 1)
     print(" - Deactivating Links:{} + {}".format(links.loc[failed_link1_index].Interface,
@@ -62,4 +63,6 @@ for i in range(20):
     if len(answer) > 0:
         print("[FAIL] difference found between BASE_SNAPSHOT and FAIL_SNAPSHOT")
         print_diff_reachability(answer)
-        break
+        sys.exit(1)
+
+print("[SUCCESS] No reachability issues found after {} rounds of chaos!".format(MAX_CHAOS))

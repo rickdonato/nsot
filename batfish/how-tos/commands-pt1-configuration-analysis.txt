@@ -19,7 +19,7 @@ load_questions()
 # init snapshot
 NETWORK_NAME = "ebgp-spine-leaf-network"
 SNAPSHOT_NAME = "ebgp-spine-leaf-snapshot"
-SNAPSHOT_PATH = "/opy/network-automation/batfish/nxos9k-ebgp-spine-leaf/snapshot"
+SNAPSHOT_PATH = "/root/network-automation/batfish/nxos9k-ebgp-spine-leaf/snapshot-1"
 
 bf_set_network(NETWORK_NAME)
 bf_init_snapshot(SNAPSHOT_PATH, name=SNAPSHOT_NAME, overwrite=True)
