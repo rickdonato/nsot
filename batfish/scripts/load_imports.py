@@ -18,4 +18,4 @@ print("[*] Initializing BASE_SNAPSHOT")
 bf_set_network(NETWORK_NAME)
 bf_init_snapshot(SNAPSHOT_PATH, name=BASE_SNAPSHOT_NAME, overwrite=True)
 
-print("[OK] Sucess - Batfish imports ready...")
+print("[OK] Success - Batfish imports ready...")
