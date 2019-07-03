@@ -11,14 +11,17 @@ diff_reach_answer = bfq.differentialReachability(
     ).frame()
 
 # run scripts
-ython3 -i scripts/chaos_monkey.py "nxos9k-ebgp-spine-leaf/snapshot-2"
+python3 -i scripts/chaos_monkey.py "nxos9k-ebgp-spine-leaf/snapshot-2"
 
-# check results - ospf interfaces
+# troubleshoot
+# 1. routes
+bfq.routes(nodes="leaf1").answer().frame()
+
+# 2. ospf interfaces
 bfq.interfaceProperties(nodes="/leaf|spine/", properties="OSPF_Enabled|OSPF_Passive|Description").answer().frame().dropna()
 
-# check results - ospf interface (ospf enabled)
-ospf_interfaces = bfq.interfaceProperties(nodes="/leaf|spine/", 
-properties="OSPF_Enabled|OSPF_Passive|Description").answer().frame().dropna()
+# 3. ospf interface (ospf enabled)
+ospf_interfaces = bfq.interfaceProperties(nodes="/leaf|spine/", properties="OSPF_Enabled|OSPF_Passive|Description").answer().frame().dropna()
 ospf_interfaces[ospf_interfaces['OSPF_Enabled'] != True]
 
 # rerun monkey
