@@ -1,0 +1,21 @@
+// In draft
+
+## Devices
+nsot devices add --hostname juniper-fw1
+nsot devices list --hostname arista-sw1 interfaces
+nsot devices list
+
+## Interfaces
+nsot interfaces list
+
+## Networks
+nsot networks list
+nsot networks list -c 192.168.100.0/24 next_network -p 28 -n 10 # get next x networks
+nsot networks list -c 192.168.100.0/24 next_address -p 28 -n 3 # get next x addresses
+
+## Attributes
+nsot attributes add -n desc -d "Description" -r network
+
+## Docs
+demo - https://gist.github.com/jathanism/2bb9e1022f90284fee4ad0327c3fc4c9 
+pynsot - https://pynsot.readthedocs.io/en/latest/cli.html
