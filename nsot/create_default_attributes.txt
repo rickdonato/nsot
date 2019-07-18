@@ -1,0 +1,25 @@
+# WIP - building requirements...
+#!/bin/bash
+
+# Create various default attrbutes that will be required for most projects.
+devices
+ - rack
+ - postion
+ - region
+ - vendor
+ - model
+ - version
+ - hw_type
+ - services
+   name:
+   port:
+   url:
+ - vrfs
+ 
+networks
+ - vlan_id
+ - vlan_description
+ - vlan_name
+ - description
+ - region
+ 
