@@ -23,3 +23,14 @@ networks
  - description
  - region
  
+interfaces
+ - l2/l3 
+ - spanning tree 
+ - mtu
+ 
+
+protocols
+ - bgp
+ - type
+ 
+ 
