@@ -1,0 +1,54 @@
+# unable to get bulk attribute creation to work.
+
+SITE1 = "${SITE1}"
+SITE2 = "${SITE2}" 
+
+## Device
+
+nsot attributes update --site-id "${SITE1}" -n rack -r Device --display
+nsot attributes update --site-id "${SITE1}" -n position -r Device --display
+nsot attributes update --site-id "${SITE1}" -n vendor -r Device --display
+nsot attributes update --site-id "${SITE1}" -n model -r Device --display
+nsot attributes update --site-id "${SITE1}" -n version -r Device --display
+nsot attributes update --site-id "${SITE1}" -n hw_type -r Device --display
+nsot attributes update --site-id "${SITE1}" -n vrfs -r Device --display --multi
+
+nsot attributes update --site-id "${SITE2}" -n rack -r Device --display
+nsot attributes update --site-id "${SITE2}" -n position -r Device --display
+nsot attributes update --site-id "${SITE2}" -n vendor -r Device --display
+nsot attributes update --site-id "${SITE2}" -n model -r Device --display
+nsot attributes update --site-id "${SITE2}" -n version -r Device --display
+nsot attributes update --site-id "${SITE2}" -n hw_type -r Device --display
+nsot attributes update --site-id "${SITE2}" -n vrfs -r Device --display --multi
+
+## Network 
+nsot attributes add --site-id "${SITE1}" -n description -r Network --display
+nsot attributes add --site-id "${SITE1}" -n vlan_id -r Network --display
+nsot attributes add --site-id "${SITE1}" -n vlan_desc -r Network --display
+nsot attributes add --site-id "${SITE1}" -n vlan_name -r Network --display
+nsot attributes add --site-id "${SITE1}" -n vrf -r Network --display
+
+nsot attributes add --site-id "${SITE2}" -n description -r Network --display
+nsot attributes add --site-id "${SITE2}" -n vlan_id -r Network --display
+nsot attributes add --site-id "${SITE2}" -n vlan_desc -r Network --display
+nsot attributes add --site-id "${SITE2}" -n vlan_name -r Network --display
+nsot attributes add --site-id "${SITE2}" -n vrf -r Network --display
+
+## Interface
+nsot attributes add --site-id "${SITE1}" -n l2_l3 -r Interface --display
+nsot attributes add --site-id "${SITE1}" -n stp_mode -r Interface --display
+nsot attributes add --site-id "${SITE1}" -n mtu -r Interface --display
+nsot attributes add --site-id "${SITE1}" -n mode -r Interface --display
+nsot attributes add --site-id "${SITE1}" -n vlans -r Interface --display --multi
+
+nsot attributes add --site-id "${SITE2}" -n l2_l3 -r Interface --display
+nsot attributes add --site-id "${SITE2}" -n stp_mode -r Interface --display
+nsot attributes add --site-id "${SITE2}" -n mtu -r Interface --display
+nsot attributes add --site-id "${SITE2}" -n mode -r Interface --display
+nsot attributes add --site-id "${SITE2}" -n vlans -r Interface --display --multi
+
+## Protocols
+nsot attributes add --site-id "${SITE1}" -n ip_addr -r Protocol --display --multi
+nsot attributes add --site-id "${SITE2}" -n ip_addr -r Protocol --display --multi
+ 
+ 
