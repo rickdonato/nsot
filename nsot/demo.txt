@@ -6,6 +6,11 @@
 * 
 
 
+# query
+nsot devices list -q 'vendor=juniper +vendor=cisco'
+nsot devices list -q 'rack=r1 -vendor=cisco'
+nsot devices list -a rack=r1 -a hw_type=switch
+
 # use the following for constructing methods
 * https://pynsot.readthedocs.io/en/latest/cli.html#debugging
 * https://pynsot.readthedocs.io/en/latest/python_api.html#fetching-resources
