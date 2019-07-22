@@ -1,20 +1,29 @@
-# Work flow
-* create device
-* create networks
-* create interfaces
-* get next networks via python
-* 
+```
+cat .pynsotrc
+[pynsot]
+url = http://172.29.236.139:8990/api
+secret_key = #####
+default_site = 7
+auth_method = auth_token
+email = rick@nsot.local
+```
 
-
+## Steps
+```
+# environment added
+nsot devices list
+nsot networks list
+nsot interfaces list
+```
+```
 # query
 nsot devices list -q 'vendor=juniper +vendor=cisco'
 nsot devices list -q 'rack=r1 -vendor=cisco'
 nsot devices list -a rack=r1 -a hw_type=switch
+```
 
-# use the following for constructing methods
-* https://pynsot.readthedocs.io/en/latest/cli.html#debugging
-* https://pynsot.readthedocs.io/en/latest/python_api.html#fetching-resources
-
+```
+# getting next addresses and networks
 from pprint import pprint as pp
 from pynsot.client import get_api_client
 c = get_api_client()
@@ -106,3 +115,9 @@ net = {
  u'10.1.0.136/29',
  u'10.1.0.152/29',
  u'10.1.0.160/29']
+```
+
+## Misc
+Use the following for constructing methods
+* https://pynsot.readthedocs.io/en/latest/cli.html#debugging
+* https://pynsot.readthedocs.io/en/latest/python_api.html#fetching-resources
