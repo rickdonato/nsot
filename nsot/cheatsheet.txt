@@ -1,5 +1,3 @@
-// In draft
-
 ## Devices
 nsot devices add --hostname juniper-fw1
 nsot devices list --hostname arista-sw1 interfaces
