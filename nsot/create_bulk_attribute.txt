@@ -1,4 +1,4 @@
-# unable to get bulk attribute creation to work.
+# unable to get bulk attribute creation to work via client.
 
 SITE1 = "${SITE1}"
 SITE2 = "${SITE2}" 
