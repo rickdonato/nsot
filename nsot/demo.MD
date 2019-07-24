@@ -1,3 +1,4 @@
+## .pynsotrc
 ```
 cat .pynsotrc
 [pynsot]
@@ -118,6 +119,6 @@ net = {
 ```
 
 ## Misc
-Use the following for constructing methods
+Use the following for constructing methods for the python module.
 * https://pynsot.readthedocs.io/en/latest/cli.html#debugging
 * https://pynsot.readthedocs.io/en/latest/python_api.html#fetching-resources
