@@ -7,7 +7,8 @@
 * `display_ok_hosts = no` : don't display OK tasks (pass).
 * `display_skipped_hosts = no` : don't display skipped tasks.
 
-# Galaxy - https://galaxy.ansible.com/
+# Galaxy
+https://galaxy.ansible.com/
 * `ansible-galaxy list`
 * `ansible-galaxy search network-engine`
 
