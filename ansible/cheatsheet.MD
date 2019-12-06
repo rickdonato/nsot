@@ -3,6 +3,7 @@
 * `--limit rtr1` : only perform to a single host from inventory.
 * `--limit rtr1,rtr3` : ony perform to a set of hosts from inventory.
 * `--list-tasks` : print tasks for current playbook.
+* `ansible -m setup db` : print facts for host.
 
 # Ansible.cfg
 * `display_ok_hosts = no` : don't display OK tasks (pass).
