@@ -1,9 +1,0 @@
-# reduce logging
-import logging
-logging.getLogger('pybatfish').setLevel(logging.WARN)
-
-# for demo
-python3 -i scripts/load_imports.py  "nxos9k-ebgp-spine-leaf/snapshot-2"
-python3 -i scripts/chaos_monkey.py  "nxos9k-ebgp-spine-leaf/snapshot-2"
-python3 -i scripts/chaos_monkey.py  "nxos9k-ebgp-spine-leaf/snapshot-3"
-

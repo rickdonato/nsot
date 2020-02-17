@@ -1,3 +1,0 @@
-# Caveats
-NXOS - No EVPN or vPC support.
-IOS - bgpSessionCompatibility() does not consider BGP auth.
